@@ -48,4 +48,25 @@ function showMap(lat, lng) {
   }
 }
 
+const barangayStreets = {
+  "Maytoong": ["Purok 1", "Purok 2", "Purok 3"],
+  "Ibaba Del Sur": ["Street A", "Street B"],
+  "Bagumbayan": ["Purok Alpha", "Purok Beta"]
+};
+
+function loadStreets() {
+  const barangay = document.getElementById("barangay").value;
+  const streetSelect = document.getElementById("street");
+
+  streetSelect.innerHTML = '<option value="">Select Street</option>';
+
+  if (barangayStreets[barangay]) {
+    barangayStreets[barangay].forEach(street => {
+      const option = document.createElement("option");
+      option.value = street;
+      option.text = street;
+      streetSelect.appendChild(option);
+    });
+  }
+}
 

@@ -5,11 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report Litter</title>
   <link rel="stylesheet" href="style.css">
-  
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-</head>
-<body>
 
+  <!-- Poppins font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!------- Logo -------- Not Final ------->
+  <link rel="icon" type="image/png" href="../assets/images/logo.png"/>
+
+</head>
+
+<body>
+  
   <div class="container">
     <h1>Report Litter</h1>
 
@@ -25,19 +34,20 @@
       </select>
 
       <!-- Location -->
-      <label>Location (Option)</label>
+      <label>Location</label>
       <button type="button" onclick="getLocation()">
         📍 Use Current Location
       </button>
       <div id="map" class="map-box"></div>
       
       <p id="locationStatus" class="info"></p>
+      <p id="errorStatus" class="error-info"></p>
 
-    <!-- Continue here!!!! Last Edited January 22, 2026, 9:40PM-->
-    <!-- Street / Purok -->
-    <label for="street">Purok / Street</label>
+      <!-- Street / Purok -->
+      <label for="street">Purok / Street</label>
       <input type="text" id="street" placeholder="e.g. Purok 4 / Recto Street" required>
 
+      <!-- Landmark -->
       <label>Landmark</label>
       <input type="text" placeholder="e.g. Near sari-sari store" required>
 
@@ -55,6 +65,15 @@
       </button>
     </form>
   </div>
+
+   <!-------- Modals ---------->
+    <div id="popupOverlay" class="popup-overlay">
+      <div class="popup-box">
+        <p id="popupMessage"></p>
+        <button onclick="closePopup()">OK</button>
+      </div>
+    </div>
+
 
   <script src="script.js"></script>
   <script
