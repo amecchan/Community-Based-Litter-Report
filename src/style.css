@@ -1,0 +1,306 @@
+/* CSS contents of Main Page */
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap);
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg: #f9fafb; /* light business background */
+    --card: #ffffff;
+    --muted: #6b7280;
+    --text: #111827;
+    --accent: #2563eb;  /* blue */
+    --accent-2: #3b82f6;
+    --shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    --radius: 12px;
+}
+
+body {
+    color: var(--text);
+    background: var(--bg);
+    min-height: 100vh;
+  }
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(to bottom, #ffffff, #f3f4f6);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+/* Hero Section */
+.hero h1 .lead {
+    color: var(--muted);
+    font-size: 36px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 20px;
+}
+
+.hero .actions {
+    margin-top: 30px;
+}
+
+/* Navigation Bar */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+}
+.nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav_logo {
+    padding: 10px 0;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--accent-2);
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    color: var(--accent-2);
+}
+.menu li {
+    text-decoration: none;
+    align-items: center;
+    color: black;
+}
+.menu li a {
+    color: #111827;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    transition: 0.3s ease;
+}
+
+.menu li a:hover {
+    background-color: var(--accent-2);
+    color: #fff;
+}
+/* Hamburger Menu */
+.hamburger {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.bar {
+    height: 3px;
+    width: 100%;
+    background-color: #333;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* Section Padding */
+section {
+    padding: 60px 20px;
+  }
+.section-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  .muted {
+    text-align: center;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: var(--radius);
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Mobile Responsive Styles */
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .nav {
+        padding: 0 20px;
+        position: relative;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        height: 60px; /* Fixed height for nav */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    /* Show hamburger menu on mobile */
+    .hamburger {
+        display: flex !important;
+        position: relative; /* Keep it in normal flow */
+        z-index: 1001; /* Ensure it's above everything */
+    }
+    
+    /* Hide the regular menu by default on mobile */
+    .menu {
+        position: fixed;
+        top: 60px; /* Start below the nav bar */
+        right: -100%;
+        width: 100%;
+        max-width: 300px;
+        height: calc(100vh - 60px); /* Subtract nav height */
+        background-color: #fff;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 20px;
+        overflow-y: auto; /* Allow scrolling if menu is too long */
+    }
+    
+    /* When menu is active (open) */
+    .menu.active {
+        right: 0;
+    }
+    
+    .menu li {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .menu li a {
+        display: block;
+        padding: 15px;
+        width: 100%;
+        text-align: left;
+        border-radius: 5px;
+    }
+    
+    /* Special buttons in mobile menu */
+    .menu li .report-litter {
+        background-color: #4CAF50 !important;
+        color: white !important;
+        text-align: center;
+        margin-top: 10px !important;
+        font-weight: 600;
+    }
+    .menu li .report-litter:hover {
+        background-color: #3e8e42 !important;
+    }
+    
+    .menu li .barangay-login {
+        background-color: #3b82f6 !important;
+        color: white !important;
+        text-align: center;
+        font-weight: 600;
+    }
+    .menu li .barangay-login:hover {
+        background-color: #0b71c5 !important;
+    }
+    
+    /* Make sure special buttons stand out */
+    .menu li:last-child,
+    .menu li:nth-last-child(2) {
+        margin-top: 5px;
+    }
+    
+    /* Overlay - only covers content below nav */
+    .overlay {
+        position: fixed;
+        top: 60px; /* Start below nav bar */
+        left: 0;
+        width: 100%;
+        height: calc(100% - 60px);
+        background-color: rgba(0,0,0,0.5);
+        display: none;
+        z-index: 999;
+    }
+    
+    .overlay.active {
+        display: block;
+    }
+    
+    /* Hamburger Animation */
+    .hamburger.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .hamburger.active:hover .bar {
+        background-color: var(--accent-2) /* Dark color for visibility */
+    }
+    
+    /* Ensure nav logo is visible */
+    .nav_logo {
+        color: #111827 !important; /* Change to dark color for mobile */
+        font-size: 24px; /* Slightly smaller on mobile */
+        z-index: 1001; /* Above overlay */
+        position: relative;
+    }
+}
+
+/* Desktop Styles - Ensure menu is visible and hamburger is hidden */
+@media (min-width: 769px) {
+    .hamburger {
+        display: none !important;
+    }
+    
+    .menu {
+        display: flex !important;
+        position: static !important;
+        height: auto !important;
+        width: auto !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding-top: 0 !important;
+        flex-direction: row !important;
+        padding: 0 !important;
+        gap: 20px !important;
+        overflow: visible !important;
+    }
+    
+    /* Reset nav_logo color for desktop */
+    .nav_logo {
+        color: #fff !important;
+    }
+}

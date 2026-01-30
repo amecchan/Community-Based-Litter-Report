@@ -1,63 +1,63 @@
+<!------ MAIN PAGE ------>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Report Litter</title>
-  <link rel="stylesheet" href="style.css">
-  
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLiRMAS</title>
+    <link rel="stylesheet" href="./src/style.css">
 </head>
+
 <body>
+        <!-- Header Start -->
+        <header>
+            <nav class="nav container">
+                <h2 class="nav_logo"><a href="#">CLiRMAS</a></h2>
+                
+                <div class="hamburger" id="hamburger-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+    
+                <ul class="menu" id="main-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="./resident/index.html" class="report-litter">Report Litter</a></li>
+                    <li><a href="#" class="barangay-login">Barangay Login</a></li>
+                </ul>
+            </div>
 
-  <div class="container">
-    <h1>Report Litter</h1>
+            </nav>
+        </header>
+        <!-- Header End -->
+        
+        <!-- Main Page/Hero Start -->
+        <main class="container" id="home">
+            <section class="hero">
+                <div>
+                    <span class="hero-content"><span class="badge">Welcome to CLiRMAS</span>
+                        <h1>Your Partner in Keeping Our Community Clean</h1>
+                        <p class="lead">This is a Community-based Litter Reporting and Accountability System for Barangay Solid Waste Management (CLiRMAS).</p>
+                        <p>Which helps residents to report and barangay officials to track and manage litter in their community.</p>
+                    </span>
 
-    <form id="reportForm">
-
-      <!-- Waste Type -->
-      <label>Type of Waste</label>
-      <select required>
-        <option value="">Select Waste Type</option>
-        <option>Plastic</option>
-        <option>Mixed</option>
-        <option>Organic</option>
-      </select>
-
-      <!-- Location -->
-      <label>Location (Option)</label>
-      <button type="button" onclick="getLocation()">
-        📍 Use Current Location
-      </button>
-      <div id="map" class="map-box"></div>
-      
-      <p id="locationStatus" class="info"></p>
-
-    <!-- Continue here!!!! Last Edited January 22, 2026, 9:40PM-->
-    <!-- Street / Purok -->
-    <label for="street">Purok / Street</label>
-      <input type="text" id="street" placeholder="e.g. Purok 4 / Recto Street" required>
-
-      <label>Landmark</label>
-      <input type="text" placeholder="e.g. Near sari-sari store" required>
-
-      <!-- Hidden GPS fields -->
-      <input type="hidden" id="latitude">
-      <input type="hidden" id="longitude">
-
-      <!-- Photo Upload -->
-      <label>Upload Photo</label>
-      <input type="file" accept="image/*">
-
-      <!-- Submit -->
-      <button type="submit" class="submit-btn">
-        Submit Report
-      </button>
-    </form>
-  </div>
-
-  <script src="script.js"></script>
-  <script
-  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+                <!--<div class="actions">
+                    <a class="btn" href="#about">Our Mission</a>
+                </div>-->
+                </div>
+            </section>
+         </main>
+        <!-- Hero End -->
+    
+    <!-- About Start -->
+     <section id="about">
+        <h2 class="section-title">About</h2>
+        <p class="muted">CLiRMAS aims to empower communities to take an active role in maintaining clean and<br>healthy environments by providing a platform for reporting and managing litter in barangays.<br>The system allows residents to report litter incidents and enables barangay officials <br>to monitor and address these issues effectively.</p>
+    </section>
+     <script src="./src/script.js"></script>
 </body>
 </html>
