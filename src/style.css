@@ -3,7 +3,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -21,7 +20,7 @@
 body {
     color: var(--text);
     background: var(--bg);
-    line-height: 1.6;
+    min-height: 100vh;
   }
 
 .container {
@@ -59,12 +58,19 @@ body {
     justify-content: space-between;
     padding: 0 60px;
 }
+.nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 
 .nav_logo {
     padding: 10px 0;
     font-size: 30px;
     font-weight: 600;
-    color: #fff;
+    color: var(--accent-2);
 }
 
 .menu {
@@ -75,33 +81,45 @@ body {
 a {
     text-decoration: none;
 }
+a:hover {
+    color: var(--accent-2);
+}
+.menu li {
+    text-decoration: none;
+    align-items: center;
+    color: black;
+}
 .menu li a {
     color: #111827;
     font-weight: 500;
     padding: 8px 12px;
     border-radius: var(--radius);
-    transition: background-color 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .menu li a:hover {
     background-color: var(--accent-2);
     color: #fff;
 }
-
-/*hamubrger menu*/
-/*.menu_toggle {
-    display: none;
+/* Hamburger Menu */
+.hamburger {
+    display: none; /* Hidden on desktop */
     flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
     cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
 }
-.menu_toggle span {
-    height: 3px;
-    width: 25px;
-    background: #111827;
-    margin-bottom: 4px;
-    border-radius: 5px;
-}*/
 
+.bar {
+    height: 3px;
+    width: 100%;
+    background-color: #333;
+    border-radius: 10px;
+    transition: 0.3s;
+}
 
 /* Section Padding */
 section {
@@ -118,7 +136,6 @@ section {
     margin-top: 10px;
   }
 
-
 /* Button Styles */
 .btn {
     display: inline-block;
@@ -131,31 +148,159 @@ section {
     transition: background-color 0.3s ease;
 }
 
-/* Primary Button */
-/*@media (max-width: 768px) {
-    .menu {
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background: #ffffff;
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        padding: 20px 0;
-        display: none;
-        box-shadow: var(--shadow);
-    }
-
-    .menu.active {
-        display: flex;
-    }
-
-    .menu_toggle {
-        display: flex;
-    }
-
+/* Mobile Responsive Styles */
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
     .nav {
         padding: 0 20px;
+        position: relative;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        height: 60px; /* Fixed height for nav */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
-}*/
+    
+    /* Show hamburger menu on mobile */
+    .hamburger {
+        display: flex !important;
+        position: relative; /* Keep it in normal flow */
+        z-index: 1001; /* Ensure it's above everything */
+    }
+    
+    /* Hide the regular menu by default on mobile */
+    .menu {
+        position: fixed;
+        top: 60px; /* Start below the nav bar */
+        right: -100%;
+        width: 100%;
+        max-width: 300px;
+        height: calc(100vh - 60px); /* Subtract nav height */
+        background-color: #fff;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 20px;
+        overflow-y: auto; /* Allow scrolling if menu is too long */
+    }
+    
+    /* When menu is active (open) */
+    .menu.active {
+        right: 0;
+    }
+    
+    .menu li {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .menu li a {
+        display: block;
+        padding: 15px;
+        width: 100%;
+        text-align: left;
+        border-radius: 5px;
+    }
+    
+    /* Special buttons in mobile menu */
+    .menu li .report-litter {
+        background-color: #4CAF50 !important;
+        color: white !important;
+        text-align: center;
+        margin-top: 10px !important;
+        font-weight: 600;
+    }
+    .menu li .report-litter:hover {
+        background-color: #3e8e42 !important;
+    }
+    
+    .menu li .barangay-login {
+        background-color: #3b82f6 !important;
+        color: white !important;
+        text-align: center;
+        font-weight: 600;
+    }
+    .menu li .barangay-login:hover {
+        background-color: #0b71c5 !important;
+    }
+    
+    /* Make sure special buttons stand out */
+    .menu li:last-child,
+    .menu li:nth-last-child(2) {
+        margin-top: 5px;
+    }
+    
+    /* Overlay - only covers content below nav */
+    .overlay {
+        position: fixed;
+        top: 60px; /* Start below nav bar */
+        left: 0;
+        width: 100%;
+        height: calc(100% - 60px);
+        background-color: rgba(0,0,0,0.5);
+        display: none;
+        z-index: 999;
+    }
+    
+    .overlay.active {
+        display: block;
+    }
+    
+    /* Hamburger Animation */
+    .hamburger.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .hamburger.active:hover .bar {
+        background-color: var(--accent-2) /* Dark color for visibility */
+    }
+    
+    /* Ensure nav logo is visible */
+    .nav_logo {
+        color: #111827 !important; /* Change to dark color for mobile */
+        font-size: 24px; /* Slightly smaller on mobile */
+        z-index: 1001; /* Above overlay */
+        position: relative;
+    }
+}
+
+/* Desktop Styles - Ensure menu is visible and hamburger is hidden */
+@media (min-width: 769px) {
+    .hamburger {
+        display: none !important;
+    }
+    
+    .menu {
+        display: flex !important;
+        position: static !important;
+        height: auto !important;
+        width: auto !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding-top: 0 !important;
+        flex-direction: row !important;
+        padding: 0 !important;
+        gap: 20px !important;
+        overflow: visible !important;
+    }
+    
+    /* Reset nav_logo color for desktop */
+    .nav_logo {
+        color: #fff !important;
+    }
+}
